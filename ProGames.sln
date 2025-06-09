@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProGames.Api", "ProGames.Api\ProGames.Api.csproj", "{0035EBFD-230B-4CC3-A7C7-4AB0FEA281D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProGames.Core", "ProGames.Core\ProGames.Core.csproj", "{68AE7F23-BDF4-4E13-B1D2-2922ECBCB3DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProGames.Web", "ProGames.Web\ProGames.Web.csproj", "{AC2F0EA3-73F0-4E53-9D7B-E1FEA30586FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0035EBFD-230B-4CC3-A7C7-4AB0FEA281D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0035EBFD-230B-4CC3-A7C7-4AB0FEA281D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0035EBFD-230B-4CC3-A7C7-4AB0FEA281D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0035EBFD-230B-4CC3-A7C7-4AB0FEA281D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68AE7F23-BDF4-4E13-B1D2-2922ECBCB3DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68AE7F23-BDF4-4E13-B1D2-2922ECBCB3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68AE7F23-BDF4-4E13-B1D2-2922ECBCB3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68AE7F23-BDF4-4E13-B1D2-2922ECBCB3DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC2F0EA3-73F0-4E53-9D7B-E1FEA30586FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC2F0EA3-73F0-4E53-9D7B-E1FEA30586FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC2F0EA3-73F0-4E53-9D7B-E1FEA30586FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC2F0EA3-73F0-4E53-9D7B-E1FEA30586FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
