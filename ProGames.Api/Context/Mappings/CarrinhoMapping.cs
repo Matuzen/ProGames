@@ -11,6 +11,8 @@ public class CarrinhoMapping : IEntityTypeConfiguration<Carrinho>
         builder.ToTable("Carrinho");
         builder.HasKey(x => x.Id);
 
+        builder.Property(x => x.Id).UseIdentityColumn();
+
         builder.Property(x=>x.UsuarioId).HasColumnType("INT");
 
         builder.HasMany(c => c.Itens)

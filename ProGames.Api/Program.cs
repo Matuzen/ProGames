@@ -2,11 +2,25 @@ using Microsoft.EntityFrameworkCore;
 using ProGames.Api.Context;
 using ProGames.Api.Repositories;
 using Microsoft.OpenApi.Models;
+using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers(); 
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
+
 
 // Swagger configurado para exibir apenas o grupo "produtos"
 builder.Services.AddSwaggerGen(c =>
@@ -29,6 +43,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Repositórios
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+var baseUrl = "https://localhost:7292";
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(baseUrl) });
+
 
 var app = builder.Build();
 
@@ -40,10 +57,12 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = ""; // Exibe o Swagger na raiz do app (http://localhost:5000/)
 });
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
+app.UseCors(policy => policy.WithOrigins("https://localhost:7292", "https://localhost:7292").AllowAnyMethod().AllowAnyHeader().WithHeaders(HeaderNames.ContentType));
 
-// Registra os endpoints dos controllers
+app.UseHttpsRedirection();
+app.UseRouting();
+app.UseCors("AllowAll");
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

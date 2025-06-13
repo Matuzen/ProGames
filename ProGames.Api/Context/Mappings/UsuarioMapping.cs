@@ -11,6 +11,8 @@ public class UsuarioMapping : IEntityTypeConfiguration<Usuario>
         builder.ToTable("Usuario");
         builder.HasKey(x => x.Id);
 
+        builder.Property(x => x.Id).UseIdentityColumn();
+
         builder.Property(x => x.NomeUsuario).HasColumnType("NVARCHAR").HasMaxLength(100);
 
         builder.HasOne(u => u.Carrinho)

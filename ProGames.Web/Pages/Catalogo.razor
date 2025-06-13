@@ -1,0 +1,67 @@
+﻿@page "/produtos"
+@inject IProdutoService produtoService
+
+@if (erro)
+{
+    <h3 class="text-danger">Ocorreu um erro ao carregar os produtos.</h3>
+}
+else if (Produtos == null)
+{
+    <h3>Carregando produtos...</h3>
+}
+else
+{
+    <h3 class="mb-5">Produtos</h3>
+    @if (Produtos.Any())
+    {
+        var produtosPorCategoria = from produto in Produtos
+                                   group produto by new { produto.CategoriaId, produto.CategoriaNome } into prodPorCatGrupo
+                                   orderby prodPorCatGrupo.Key.CategoriaNome
+                                   select prodPorCatGrupo;
+
+        @foreach (var grupo in produtosPorCategoria)
+        {
+            <h4 class="mt-4">@grupo.Key.CategoriaNome</h4>
+
+            <div class="row mt-3">
+                @foreach (var item in grupo)
+                {
+                    <div class="col-md-3 mb-2">
+                        <a href="#">
+                            <div class="card">
+                                <img class="img-thumbnail" src="@item.ImagemUrl" />
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3">
+                                        @item.Preco.ToString("c")
+                                    </h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <p>Nenhum produto encontrado.</p>
+    }
+}
+
+@code {
+    public IEnumerable<ProdutoDto>? Produtos { get; set; }
+    private bool erro = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Produtos = await produtoService.GetItens();
+        }
+        catch (Exception ex)
+        {
+            erro = true;
+            Console.WriteLine($"Erro ao carregar produtos: {ex.Message}");
+        }
+    }
+}

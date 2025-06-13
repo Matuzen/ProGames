@@ -11,6 +11,8 @@ public class ProdutoMapping : IEntityTypeConfiguration<Produto>
         builder.ToTable("Produto");
         builder.HasKey(x=>x.Id);
 
+        builder.Property(x => x.Id).UseIdentityColumn();
+
         builder.Property(x => x.Nome)
               .HasColumnType("NVARCHAR")
               .HasMaxLength(80)
