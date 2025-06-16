@@ -17,6 +17,33 @@ public class ProdutoService : IProdutoService
         _logger = logger;
     }
 
+    public async Task<ProdutoDto> GetItem(int id)
+    {
+        try
+        {
+            var response = await _httpCliente.GetAsync($"api/produtos/{id}");
+            if (response.IsSuccessStatusCode) // Status Code 200-299
+            { 
+                if(response.StatusCode == System.Net.HttpStatusCode.NoContent) // status 204
+                {
+                    return default(ProdutoDto); // retorna os valores padrão/empty
+                }
+                return await response.Content.ReadFromJsonAsync<ProdutoDto>();
+            }
+            else
+            {
+                var message = await response.Content.ReadAsStringAsync();
+                _logger.LogError($"Erro a obter produto pelo id = {id} - {message}");
+                throw new Exception($"Status Code : {response.StatusCode} - {message}");
+            }
+        }
+        catch (Exception)
+        {
+            _logger.LogError($"Erro a obter produto pelo id{id}");
+            throw;
+        }
+    }
+
     public async Task<IEnumerable<ProdutoDto>> GetItens()
     {
         try
