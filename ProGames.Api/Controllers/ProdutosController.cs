@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProGames.Api.Mappings;
-using ProGames.Api.Repositories;
+using ProGames.Api.Repositories.Interfaces;
 using ProGames.Core.DTOs;
 
 namespace ProGames.Api.Controllers;

@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using ProGames.Api.Context;
-using ProGames.Api.Repositories;
 using Microsoft.OpenApi.Models;
 using Microsoft.Net.Http.Headers;
+using ProGames.Api.Repositories.Interfaces;
+using ProGames.Api.Repositories.Implementacoes;
 
 var builder = WebApplication.CreateBuilder(args);
 

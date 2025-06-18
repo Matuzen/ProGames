@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProGames.Api.Context;
+using ProGames.Api.Repositories.Interfaces;
 using ProGames.Core.Entities;
 
-namespace ProGames.Api.Repositories;
+namespace ProGames.Api.Repositories.Implementacoes;
 
 public class ProdutoRepository : IProdutoRepository
 {

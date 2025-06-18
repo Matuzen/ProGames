@@ -1,6 +1,6 @@
 ﻿using ProGames.Core.Entities;
 
-namespace ProGames.Api.Repositories;
+namespace ProGames.Api.Repositories.Interfaces;
 
 public interface IProdutoRepository
 {
